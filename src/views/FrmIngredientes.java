@@ -31,7 +31,7 @@ public class FrmIngredientes extends BaseFrame {
      */
     public FrmIngredientes() {
         initComponents();
-        setTitle("Agregar Ingredientes");
+        setTitle("Agregar Ingredientes Normales");
         super.iniciarVentana(panel);
         proveedoresIngredientes = (List<Proveedor>) Proveedores.select(Conexion.getInstance().getCon(), "select * from proveedores", Proveedor.class);
         try {
