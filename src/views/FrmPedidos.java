@@ -62,7 +62,7 @@ public class FrmPedidos extends BaseFrame {
 
         jLabel1.setText("Hacer Pedido");
 
-        jLabel3.setText("Fecha de Entrega: ");
+        jLabel3.setText("Fecha de Entrega del pedido: ");
 
         txtFechaEntrega.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
