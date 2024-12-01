@@ -36,7 +36,7 @@ public class BaseController {
      * @return Lista con los elementos que devuelva el select
      */
     public static List<?> select(Connection connection, String sql, Class clase) {
-        System.out.println(connection);
+        System.out.println(connection +"R1");
         List objects = new ArrayList<>();
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             try (ResultSet rs = ps.executeQuery()) {
