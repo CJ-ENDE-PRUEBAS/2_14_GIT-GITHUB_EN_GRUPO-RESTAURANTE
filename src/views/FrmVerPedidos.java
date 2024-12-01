@@ -128,7 +128,7 @@ public class FrmVerPedidos extends BaseFrame {
             }
         });
 
-        btnRefrescar.setText("Refrescar Componentes");
+        btnRefrescar.setText("Refrescar Componentes nuevos de Igor.");
         btnRefrescar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefrescarActionPerformed(evt);
