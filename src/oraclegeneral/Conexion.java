@@ -109,8 +109,8 @@ public class Conexion {
 
 
                 + "Pongase en contacto con su DBA para que ingrese la contraseña del usuario numero 1 \"System\" ...");
-                + "Pongase en contacto con su DBA para que ingrese la contraseña del usuario numero2 \"System\" ...");
-
+                + "Pongase en contacto con su DBA para que ingrese la contraseña del usuario numero 2 \"System\" ...");
+		+ "Pongase en contacto con su DBA para que ingrese la contraseña del usuario numero 3 \"System\" ...");
 
                 + "Pongase en contacto con su DBA para que ingrese la contraseña del usuario usuario numero1, numero2 , numero3 \"System\" ...");
 
