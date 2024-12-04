@@ -142,7 +142,7 @@ public class Conexion {
 
     /**
      * Metodo que hace la base de datos para su utilizacion en el sistema. Este
-     * metodo solo se usara una vez al correr el programa por primera vez.
+     * metodo solo usara una vez al correr el programa por primera vez.
      */
     public static Boolean creacionBase() {
         FileReader fstream = null;
