@@ -58,6 +58,7 @@ public class FrmVerRecetas extends BaseFrame {
         super.iniciarVentana(panel);
         recetas =(List<Receta>) Recetas.select(Conexion.getInstance().getCon(), "select * from recetas", Receta.class);
         try {
+            //Cambio Eneko
             Recetas.fillCombo(comboRecetas, recetas, "id_receta", Receta.class);
         } catch (Exception ex) {
             Logger.getLogger(FrmPedidosProductos.class.getName()).log(Level.SEVERE, null, ex);

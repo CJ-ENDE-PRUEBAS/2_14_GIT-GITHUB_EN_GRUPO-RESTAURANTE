@@ -86,7 +86,7 @@ public class FrmProveedores extends BaseFrame {
 
         txtCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCiudadActionPerformed(evt);
+                txtCiudadActionPerformed(evt);//Cambio Eneko2
             }
         });
 
