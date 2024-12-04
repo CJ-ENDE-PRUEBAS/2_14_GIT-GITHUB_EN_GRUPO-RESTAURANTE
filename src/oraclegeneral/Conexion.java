@@ -141,7 +141,7 @@ public class Conexion {
     }
 
     /**
-     * Metodo que Crea la base de datos para su utilizacion en el sistema. Este
+     * Metodo que hace la base de datos para su utilizacion en el sistema. Este
      * metodo solo se usara una vez al correr el programa por primera vez.
      */
     public static Boolean creacionBase() {
