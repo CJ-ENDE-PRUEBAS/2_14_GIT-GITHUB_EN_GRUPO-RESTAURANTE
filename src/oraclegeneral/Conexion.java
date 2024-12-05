@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * Clase que contiene los metodos para la conexion de la base de datos asi como
  * los metodos de busqueda y de actualizacion de la base.
  *
- * @author Erik David Zubia Hernandez
+ * @author Samuel charry castiblanco
  * @version 1.0
  * @since 15/05/2015
  */
