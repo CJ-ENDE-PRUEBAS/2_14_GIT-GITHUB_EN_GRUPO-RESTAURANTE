@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author icjardin
+ * @author Xiker
  *
  */
 module ProyectoRestaurante {
