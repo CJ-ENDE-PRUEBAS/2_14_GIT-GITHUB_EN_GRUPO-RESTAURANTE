@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author icjardin
+ * @author Samuel Charry
  *
  */
 module ProyectoRestaurante {
