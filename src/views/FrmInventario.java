@@ -29,7 +29,7 @@ public class FrmInventario extends BaseFrame {
         setTitle("Inventario");
         super.iniciarVentana(panel);
         DefaultTableModel model = (DefaultTableModel) tableProductos.getModel();
-        
+        //cambio ruben 2
         productos.stream().forEach((producto) -> {
             List<String> list = new ArrayList<>();
             list.add(producto.getNombre());
@@ -59,7 +59,7 @@ public class FrmInventario extends BaseFrame {
 
         tableProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+            //Cambio Ruben
             },
             new String [] {
                 "Nombre", "Precio Unitario", "Cantidad Disponible"
