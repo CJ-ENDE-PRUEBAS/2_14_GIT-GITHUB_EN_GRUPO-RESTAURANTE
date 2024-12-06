@@ -3,6 +3,7 @@
  */
 /**
  * @author Xiker
+ * @author Samuel Charry
  *
  */
 module ProyectoRestaurante {

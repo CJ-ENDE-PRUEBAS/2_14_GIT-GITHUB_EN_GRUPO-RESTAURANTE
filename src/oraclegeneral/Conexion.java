@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * Clase que contiene los metodos para la conexion de la base de datos asi como
  * los metodos de busqueda y de actualizacion de la base.
  *
- * @author Erik David Zubia Hernandez
+ * @author Samuel charry castiblanco
  * @version 1.0
  * @since 15/05/2015
  */
@@ -106,14 +106,19 @@ public class Conexion {
      */
     public static Boolean creacionUsuario() {
         JOptionPane.showMessageDialog(null, "Lo sentimos es la primera vez que entrara al sistema.\n"
+        feature/A2_nueva-funcionalidad
+
+
+
 
 
                 + "Pongase en contacto con su DBA para que ingrese la contraseña del usuario numero 1 \"System\" ...");
-                // + "Pongase en contacto con su DBA para que ingrese la contraseña del usuario numero 2 \"System\" ...");
-		        // + "Pongase en contacto con su DBA para que ingrese la contraseña del usuario numero 3 \"System\" ...");
+                + "Pongase en contacto con su DBA para que ingrese la contraseña del usuario numero 2 \"System\" ...");
+		            + "Pongase en contacto con su DBA para que ingrese la contraseña del usuario numero 3 \"System\" ...");
 
                 + "Pongase en contacto con su DBA para que ingrese la contraseña del usuario usuario numero1, numero2 , numero3 \"System\" ...");
 
+        develop
         File file = new File("CrearUsuario.txt");
         usuario = "system";
         contrasena = JOptionPane.showInputDialog("Introduzca la contraseña del usuario system");
