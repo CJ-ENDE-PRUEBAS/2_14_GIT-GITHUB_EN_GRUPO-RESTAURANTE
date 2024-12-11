@@ -25,6 +25,7 @@ public class InicioSistema {
             frmLogin.setVisible(true);
             }
         }
+        
             }
 
 }
