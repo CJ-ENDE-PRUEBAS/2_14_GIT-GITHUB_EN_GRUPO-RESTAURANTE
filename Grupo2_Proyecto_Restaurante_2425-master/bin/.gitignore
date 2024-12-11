@@ -7,5 +7,3 @@ nbactions.xml
 nb-configuration.xml
 .nb-gradle/
 nbproject/private/private.properties
-/module-info.class
-/bin/

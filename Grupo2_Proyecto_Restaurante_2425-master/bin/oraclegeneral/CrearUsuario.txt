@@ -1,0 +1,3 @@
+create user panaderia identified by abcd1234;
+grant connect to panaderia;
+grant all privileges to panaderia identified by abcd1234;

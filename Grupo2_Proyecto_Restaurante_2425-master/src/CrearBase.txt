@@ -1,0 +1,268 @@
+
+CREATE TABLE Ingredientes(id_ingrediente INTEGER NOT NULL, nombre_ingrediente VARCHAR2(30), exitencia_inventario FLOAT, costo_compra FLOAT, id_proveedor INTEGER, PRIMARY KEY (id_ingrediente))
+
+CREATE TABLE Productos(id_producto INTEGER NOT NULL, nombre VARCHAR2(50) NULL, precio_unitario FLOAT NULL, cantidad_disponible INTEGER NOT NULL, PRIMARY KEY (id_producto))
+
+CREATE TABLE Pedidos(id_pedido INTEGER NOT NULL, fecha_pedido DATE NULL , total FLOAT NULL , fecha_entrega DATE NULL , estado VARCHAR(15) NULL , PRIMARY KEY (id_pedido))
+
+CREATE TABLE Pedidos_Producto(id_pedido INTEGER NOT NULL, id_producto INTEGER NOT NULL, cantidad INTEGER NULL , PRIMARY KEY (id_pedido, id_producto))
+
+CREATE TABLE Proveedores(id_proveedor INTEGER NOT NULL, nombre_proveedor VARCHAR2(30) NULL, direccion_proveedor VARCHAR2(50) NULL, telefono INTEGER NULL, ciudad VARCHAR2(30) NULL, PRIMARY KEY (id_proveedor))
+
+CREATE TABLE Ordenes_Ingredientes(id_orden INTEGER NOT NULL, id_proveedor INTEGER NULL, id_ingrediente INTEGER NULL, cantidad FLOAT NULL, fecha_pedido DATE NULL, total_compra FLOAT NULL, PRIMARY KEY (id_orden))
+
+CREATE TABLE Recetas(id_receta INTEGER NOT NULL, id_producto INTEGER NULL , tiempo_coccion INTEGER NULL , cantidad_hecha INTEGER NULL , descripcion VARCHAR(900) NULL, PRIMARY KEY (id_receta))
+
+CREATE TABLE Ingredientes_Recetas(id_receta INTEGER NOT NULL, id_ingrediente INTEGER NOT NULL, cantidad_ingred FLOAT NULL,PRIMARY KEY (id_ingrediente,id_receta))
+
+CREATE TABLE Usuarios(id_usuario INTEGER NOT NULL, usuario VARCHAR2(20) NULL, contrasena VARCHAR2(30) NULL, PRIMARY KEY (id_usuario))
+
+ALTER TABLE Ingredientes ADD (FOREIGN KEY (id_proveedor) REFERENCES Proveedores (id_proveedor) ON DELETE SET NULL)
+
+ALTER TABLE Ordenes_Ingredientes ADD (FOREIGN KEY (id_proveedor) REFERENCES Proveedores (id_proveedor) ON DELETE SET NULL)
+
+ALTER TABLE Ordenes_Ingredientes ADD (FOREIGN KEY (id_ingrediente) REFERENCES Ingredientes (id_ingrediente) ON DELETE SET NULL)
+
+ALTER TABLE Recetas ADD (FOREIGN KEY (id_producto) REFERENCES Productos (id_producto) ON DELETE SET NULL)
+
+ALTER TABLE Ingredientes_Recetas ADD (FOREIGN KEY (id_ingrediente) REFERENCES Ingredientes (id_ingrediente) ON DELETE SET NULL)
+
+ALTER TABLE Ingredientes_Recetas ADD (FOREIGN KEY (id_receta) REFERENCES Recetas (id_receta) ON DELETE SET NULL)
+
+ALTER TABLE Pedidos_Producto ADD (FOREIGN KEY (id_pedido) REFERENCES Pedidos (id_pedido) ON DELETE SET NULL)
+
+ALTER TABLE Pedidos_Producto ADD (FOREIGN KEY (id_producto) REFERENCES Productos (id_producto) ON DELETE SET NULL)
+
+create sequence usuarios_seq start with 1 increment by 1
+
+insert into usuarios(id_usuario, usuario, contrasena) values (usuarios_seq.nextval, 'administrador', 'panaderia1234')
+
+insert into usuarios(id_usuario, usuario, contrasena) values(usuarios_seq.nextval, 'vendedor', 'panes')
+
+create sequence product_seq start with 1 increment by 1
+
+insert into productos(id_producto, nombre, precio_unitario, cantidad_disponible) values(product_seq.nextval, 'Brioche Fino', 10, 20)
+
+insert into productos(id_producto, nombre, precio_unitario, cantidad_disponible) values(product_seq.nextval, 'Brioche semi-fina', 8.5, 50)
+
+insert into productos(id_producto, nombre, precio_unitario, cantidad_disponible) values(product_seq.nextval, 'Cachito Salado', 3, 60)
+
+insert into productos(id_producto, nombre, precio_unitario, cantidad_disponible) values(product_seq.nextval, 'Calados', 8.3, 15)
+
+insert into productos(id_producto, nombre, precio_unitario, cantidad_disponible) values(product_seq.nextval, 'Corona de Pascua', 100, 2)
+
+insert into productos(id_producto, nombre, precio_unitario, cantidad_disponible) values(product_seq.nextval, 'Crorissant Marcelino', 15, 14)
+
+insert into productos(id_producto, nombre, precio_unitario, cantidad_disponible) values(product_seq.nextval, 'Croissant refrigerado', 8, 15)
+
+insert into productos(id_producto, nombre, precio_unitario, cantidad_disponible) values(product_seq.nextval, 'Galleta quesadilla', 6, 10)
+
+insert into productos(id_producto, nombre, precio_unitario, cantidad_disponible) values(product_seq.nextval, 'Pan con Avena', 3, 25)
+
+insert into productos(id_producto, nombre, precio_unitario, cantidad_disponible) values(product_seq.nextval, 'Cerdito', 7, 35)
+
+create sequence proveedor_seq start with 1 increment by 1
+
+insert into proveedores(id_proveedor, nombre_proveedor, direccion_proveedor, telefono, ciudad) values (proveedor_seq.nextval, 'Harinas Torres', 'Americas 12', 6423243, 'chihuahua')
+
+insert into proveedores(id_proveedor, nombre_proveedor, direccion_proveedor, telefono, ciudad) values (proveedor_seq.nextval, 'Huevos Granjita', 'Granjas 12', 64223443, 'Camargo')
+
+insert into proveedores(id_proveedor, nombre_proveedor, direccion_proveedor, telefono, ciudad) values (proveedor_seq.nextval, 'Panaderias Varias', 'Periferico 1221', 612345, 'Chihuahua')
+
+insert into proveedores(id_proveedor, nombre_proveedor, direccion_proveedor, telefono, ciudad) values (proveedor_seq.nextval, 'Dey', 'Americas 19', 6423213, 'Chihuahua')
+
+insert into proveedores(id_proveedor, nombre_proveedor, direccion_proveedor, telefono, ciudad) values (proveedor_seq.nextval, 'Primavera', 'Av. Juventud 12', 6423283, 'Delicias')
+
+insert into proveedores(id_proveedor, nombre_proveedor, direccion_proveedor, telefono, ciudad) values (proveedor_seq.nextval, 'Azucares Hernandez', 'Fresno 12', 6423293, 'Chihuahua')
+
+insert into proveedores(id_proveedor, nombre_proveedor, direccion_proveedor, telefono, ciudad) values (proveedor_seq.nextval, 'La Estrella', 'Pino 12', 6425243, 'Chihuahua')
+
+insert into proveedores(id_proveedor, nombre_proveedor, direccion_proveedor, telefono, ciudad) values (proveedor_seq.nextval, 'Lala', 'Industrias 16', 6423243, 'Chihuahua')
+
+insert into proveedores(id_proveedor, nombre_proveedor, direccion_proveedor, telefono, ciudad) values (proveedor_seq.nextval, 'Quacker', 'Granjitas 19', 6427293, 'Chihuahua')
+
+insert into proveedores(id_proveedor, nombre_proveedor, direccion_proveedor, telefono, ciudad) values (proveedor_seq.nextval, 'Sirreña', 'Aceros 16', 64231343, 'Chihuahua')
+
+create sequence ingredientes_seq start with 1 increment by 1
+
+insert into ingredientes(id_ingrediente, nombre_ingrediente, exitencia_inventario, costo_compra, id_proveedor) values (ingredientes_seq.nextval, 'Harina', 25, 10.50, 1)
+
+insert into ingredientes(id_ingrediente, nombre_ingrediente, exitencia_inventario, costo_compra, id_proveedor) values (ingredientes_seq.nextval, 'Huevos', 60, 3, 2)
+
+insert into ingredientes(id_ingrediente, nombre_ingrediente, exitencia_inventario, costo_compra, id_proveedor) values (ingredientes_seq.nextval, 'Levadura Fresca', 30, 25, 3)
+
+insert into ingredientes(id_ingrediente, nombre_ingrediente, exitencia_inventario, costo_compra, id_proveedor) values (ingredientes_seq.nextval, 'Agua', 60, 3, 4)
+
+insert into ingredientes(id_ingrediente, nombre_ingrediente, exitencia_inventario, costo_compra, id_proveedor) values (ingredientes_seq.nextval, 'Margarina', 10, 20, 5)
+
+insert into ingredientes(id_ingrediente, nombre_ingrediente, exitencia_inventario, costo_compra, id_proveedor) values (ingredientes_seq.nextval, 'Azucar', 25, 15, 6)
+
+insert into ingredientes(id_ingrediente, nombre_ingrediente, exitencia_inventario, costo_compra, id_proveedor) values (ingredientes_seq.nextval, 'Sal', 25, 12, 7)
+
+insert into ingredientes(id_ingrediente, nombre_ingrediente, exitencia_inventario, costo_compra, id_proveedor) values (ingredientes_seq.nextval, 'Leche', 25, 15, 8)
+
+insert into ingredientes(id_ingrediente, nombre_ingrediente, exitencia_inventario, costo_compra, id_proveedor) values (ingredientes_seq.nextval, 'Mejorador de Masa', 25, 25, 3)
+
+insert into ingredientes(id_ingrediente, nombre_ingrediente, exitencia_inventario, costo_compra, id_proveedor) values (ingredientes_seq.nextval, 'Queso', 25, 40, 8)
+
+insert into ingredientes(id_ingrediente, nombre_ingrediente, exitencia_inventario, costo_compra, id_proveedor) values (ingredientes_seq.nextval, 'Avena', 5, 15, 9)
+
+insert into ingredientes(id_ingrediente, nombre_ingrediente, exitencia_inventario, costo_compra, id_proveedor) values (ingredientes_seq.nextval, 'Manteca', 25, 8, 10)
+
+create sequence pedidos_seq start with 1 increment by 1
+
+create sequence ordenes_seq start with 1 increment by 1
+
+create sequence recetas_seq start with 1 increment by 1
+
+insert into recetas (id_receta, id_producto, tiempo_coccion, cantidad_hecha, descripcion) values (recetas_seq.nextval, 1, 25, 10, 'Alistar y pesar los ingredientes. Hacer una esponja con la mitad de la harina, la mitad del agua y la totalidad de la levadura. Fermentar durante una hora. Transcurrido ese tiempo, proceder a mezclar todos los ingredientes. Fermentar durante 60 minutos. Proceder a elaborar los panes de la forma y tamaño deseados. Colocarlos en cuarto de crecimiento. Hornear.')
+
+insert into recetas (id_receta, id_producto, tiempo_coccion, cantidad_hecha, descripcion) values (recetas_seq.nextval, 2, 25, 15, ' Alistar los ingredientes y equipos. Pesar ingredientes. Disolver la levadura en el agua. Mezclar, amasar y sobar. Pesar porciones según tamaño deseado. Bolear y colocar en bandejas o moldes. Hacer presión en el centro. Humedecer con huevo. Colocar una pequeña bolita de masa en el centro. Llevar al cuarto de crecimiento. Pintar con huevo. Hornear. Desmoldar.')
+
+insert into recetas (id_receta, id_producto, tiempo_coccion, cantidad_hecha, descripcion) values (recetas_seq.nextval, 3, 25, 25, 'Alistar los ingredientes y equipos. Pesar ingredientes. Disolver la levadura en la mitad del agua. Disolver la sal y el azúcar en el resto del agua. Mezclar, amasar y fermentar por 15 minutos. Si hay sobadora, se le da máquina hasta obtener una consistencia elástica. Laminar a un cm. de espesor. Distribuir la margarina en la mitad de la masa. Doblar y darle una vuelta sencilla. Laminar de nuevo. Cortar en forma de triangulo. Semi-enrollar. Llevar al cuarto de crecimiento. Pintar con huevo. Hornear.')
+
+insert into recetas (id_receta, id_producto, tiempo_coccion, cantidad_hecha, descripcion) values (recetas_seq.nextval, 4, 20, 25, 'Alistar ingredientes y equipos. Pesar los ingredientes. Disolver la levadura en la mitad del agua. Disolver la sal y el azúcar en el resto del agua. Mezclar, amasar y fermentar por 15 minutos. Sobar hasta obtener una masa suave y elástica. Pesar del tamaño deseado. Bolear. Dejar en crecimiento sobre la mesa. Recubrir con margarina. Aplanar y pegar. Colocar en bandejas. Colocar en cuarto de crecimiento. Pre-hornear. Enfriar. Despegar. Calar y tostar. Dejar enfriar. Empacar.')
+
+insert into recetas (id_receta, id_producto, tiempo_coccion, cantidad_hecha, descripcion) values (recetas_seq.nextval, 5, 30, 1, 'Alistar los ingredientes de la masa. Disolver la levadura en el agua y adicionarle a los demás ingredientes. Mezclar manual o mecánicamente hasta incorporarlos totalmente. Dejar reposar durante 10 minutos, cubierta con plástico. Dar trabajo a la masa hasta obtener una textura suave y homogénea. Pesar 8 pociones de 750 gr. c/u. Laminar cada porción y aplicar la margarina fundida. Espolvorear la mezcla de azúcar y canela, adicionar el relleno (100 gr. para cada porción de masa). Enrollar. Cortar el rollo a lo largo por el centro, trenzar y darle forma de círculo. Dejar en crecimiento al ambiente o en cuarto de fermentación. Hornear a 375 °F por 30 min. Dar acabado al producto con mermelada, fondant blanco y café. Empacar el producto frío, para una mejor conservación.')
+
+insert into recetas (id_receta, id_producto, tiempo_coccion, cantidad_hecha, descripcion) values (recetas_seq.nextval, 6, 25, 5, 'Alistar los ingredientes y equipos. Pesar los ingredientes. Disolver la levadura. Mezclar todo y trabajar hasta obtener una masa elástica. Dejar reposar durante 10 min. cubierta con plástico. Hacer un pastón ton la margarina para hojaldres. Laminar la masa dos veces el tamaño del pastón. Colocar el pastón en la masa y cubrir. Laminar a 1 cm. de espesor y dar una vuelta sencilla. Laminar de nuevo y dar una vuelta doble. Dejar reposar durante 10 min. cubierta con plástico. Laminar al espesor deseado. Distribuir e toda la masa el relleno deseado. Enrollar suave y sellar bien el borde. Emparejar el rollo. Cortar las porciones. Colocar en bandejas. Dejar crecer. Brillar con huevo. Hornear.')
+
+insert into recetas (id_receta, id_producto, tiempo_coccion, cantidad_hecha, descripcion) values (recetas_seq.nextval, 7, 25, 5, 'Alistar los ingredientes y equipos. Pesar los ingredientes según el orden de la receta. Colocar los ingredientes en la amasadora. Disolver la levadura en el agua y adicionarla. Trabajar hasta obtener una masa suave. Dejar reposar durante 10 min. cubierta con plástico. Hacer un pastón con la margarina para hojaldres. Laminar la masados veces el tamaño del pastón. Colocar el pastón en el centro de la masa y cubrir. Laminar a 1 cm. de espesor y dar una vuelta sencilla. Laminar de nuevo y dar una vuelta doble. Colocarlo en bandeja, cubrir con plástico y refrigerar a 3 °C por 1 hora. Sacar del refrigerador y dejar a ambiente de 15 a 30 min. Laminar del espesor deseado. Dejar reposar durante 15 min. Cortar las porciones y rellenar. Colocar en cuarto de crecimiento. Dejar crecer. Brillar con huevo. Hornear. Recubrir y decorar.')
+
+insert into recetas (id_receta, id_producto, tiempo_coccion, cantidad_hecha, descripcion) values (recetas_seq.nextval, 8, 15, 3, 'Alistar los ingredientes y equipo. Moler queso y panela. Pesar ingredientes. Mezclar manual o mecánicamente todos los ingredientes, hasta obtener una pasta suave y homogénea. A una cuarta parte de la pasta, adicionarle el cacao. Hacer rollos o laminar la pasta sin cacao. Cortar porciones de la pasta sin color. Colocar una porción de pasta con cacao sobre la otra. Hornear.')
+
+insert into recetas (id_receta, id_producto, tiempo_coccion, cantidad_hecha, descripcion) values (recetas_seq.nextval, 9, 30, 9, 'Colocar en la amasadora todos los ingredientes juntos y amasar hasta lograr una masa sedosa y bien refinada. Dar 5 minutos de descanso. Dar 8 vueltas por la sobadora. Dejar descansar 30 minutos. Cortar piezas del tamaño deseado. Armar bollos y dejar descansar nuevamente hasta poder armar con facilidad. Poner en cámara de fermentación a 35ºC y 82% de humedad. Hornear a 210ºC con mucho vapor.')
+
+insert into recetas (id_receta, id_producto, tiempo_coccion, cantidad_hecha, descripcion) values (recetas_seq.nextval, 10, 30, 35, 'Unir todos los ingredientes y amasar por 6-7 minutos hasta que el gluten esté bien desarrollado. Dejar reposar por 10 minutos y cortar las piezas de acuerdo a tamaño deseado y dejar descansar por otros 10 minutos. Sacar el gas de la masa y armar las piezas, poner en los moldes y en cámara de fermentación por 60 minutos aprox. Hornear a 200ºC por 20-30 minutos.')
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (1, 1, 1)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (1, 2, 0.4)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (1, 3, 0.06)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (1, 4, 0.1)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (1, 5, 0.4)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (1, 6, 0.1)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (1, 7, 0.01)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (2, 1, 3)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (2, 8, 0.5)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (2, 3, 0.12)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (2, 7, 0.045)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (2, 6, 0.375)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (2, 5, 0.75)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (2, 2, 0.75)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (3, 1, 3)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (3, 4, 1.65)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (3, 3, 0.06)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (3, 7, 0.06)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (3, 9, 0.03)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (3, 6, 0.25)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (3, 5, 0.25)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (4, 1, 3)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (4, 4, 1.65)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (4, 3, 0.09)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (4, 9, 0.03)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (4, 7, 0.06)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (4, 6, 0.25)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (4, 12, 0.25)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (4, 5, 0.18)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (5, 1, 3.25)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (5, 4, 0.5)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (5, 3, 0.195)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (5, 7, 0.032)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (5, 6, 0.625)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (5, 5, 0.75)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (5, 2, 0.65)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (6, 1, 1.5)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (6, 4, 0.6)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (6, 3, 0.06)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (6, 7, 0.03)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (6, 6, 0.125)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (6, 5, 0.125)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (6, 2, 0.3)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (7, 1, 1.5)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (7, 7, 0.03)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (7, 4, 0.125)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (7, 2, 0.3)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (7, 5, 0.125)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (7, 3, 0.06)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (8, 1, 0.5)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (8, 10, 0.5)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (8, 5, 0.125)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (8, 2, 0.1)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (9, 1, 0.7)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (9, 11, 0.3)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (9, 4, 0.56)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (9, 3, 0.06)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (9, 7, 0.022)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (9, 9, 0.02)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (9, 12, 0.03)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (10, 1, 15)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (10, 3, 0.6)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (10, 12, 2)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (10, 7, 0.4)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (10, 9, 0.2)
+
+insert into ingredientes_Recetas (id_receta, id_ingrediente, cantidad_ingred) values (10, 4, 12.6)
