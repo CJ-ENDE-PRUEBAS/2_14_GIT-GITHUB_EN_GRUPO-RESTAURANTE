@@ -21,8 +21,8 @@ public class InicioSistema {
            frmLogin.setVisible(true);
         }else{
             if((Conexion.creacionUsuario() ==true) && (Conexion.creacionBase()==true)){
-            Login frmLogin = new Login();
-            frmLogin.setVisible(true);
+            Login Andres = new Login();
+            Andres.setVisible(true);
             }
         }
             }
