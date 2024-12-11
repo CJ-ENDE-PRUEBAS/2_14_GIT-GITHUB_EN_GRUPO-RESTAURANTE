@@ -13,6 +13,7 @@ import views.Login;
  * @since 16/05/2015
  * @version 1.0
  */
+//Sandra
 public class InicioSistema {
     
     public static void main(String[] args) {
